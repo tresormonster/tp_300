@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 
+import '../../../authentiification/services/token_service.dart';
+
 import '../controllers/requete_controller.dart';
 
 import '../widgets/requete_filter_bar.dart';
 import '../widgets/requete_list.dart';
 import '../widgets/requete_details.dart';
 
-class RequeteScreen
-    extends StatefulWidget {
-
+class RequeteScreen extends StatefulWidget {
   const RequeteScreen({
     super.key,
   });
 
   @override
-  State<RequeteScreen>
-      createState() =>
-          _RequeteScreenState();
+  State<RequeteScreen> createState() =>
+      _RequeteScreenState();
 }
 
 class _RequeteScreenState
@@ -25,8 +24,44 @@ class _RequeteScreenState
   final controller =
       RequeteController();
 
+  bool loading = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    charger();
+  }
+
+  Future<void> charger() async {
+
+    final id =
+        await TokenService.getId();
+
+    if (id != null) {
+
+      await controller
+          .chargerRequetes(
+        id,
+      );
+    }
+
+    setState(() {
+
+      loading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    if (loading) {
+
+      return const Center(
+        child:
+            CircularProgressIndicator(),
+      );
+    }
 
     return Container(
 
@@ -37,7 +72,6 @@ class _RequeteScreenState
 
         children: [
 
-          // 🔥 FILTERS
           const RequeteFilterBar(),
 
           Expanded(
@@ -46,7 +80,6 @@ class _RequeteScreenState
 
               children: [
 
-                // 🔥 LEFT
                 Expanded(
 
                   flex: 2,
@@ -71,7 +104,6 @@ class _RequeteScreenState
                   ),
                 ),
 
-                // 🔥 RIGHT
                 Expanded(
 
                   flex: 3,

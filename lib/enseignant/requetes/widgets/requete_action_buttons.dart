@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
 
-class RequeteActionButtons
-    extends StatelessWidget {
+class RequeteActionButtons extends StatelessWidget {
+
+  final VoidCallback onValider;
+  final VoidCallback onRefuser;
 
   const RequeteActionButtons({
     super.key,
+    required this.onValider,
+    required this.onRefuser,
   });
 
   Widget button({
-
     required String title,
-
     required IconData icon,
-
     required Color background,
-
     required Color textColor,
+    required VoidCallback onPressed,
   }) {
 
     return Expanded(
 
       child: Container(
 
-        height: 52,
+        height: 42,
 
-        margin:
-            const EdgeInsets.only(
+        margin: const EdgeInsets.only(
           right: 12,
         ),
 
@@ -42,26 +42,21 @@ class RequeteActionButtons
 
             style: const TextStyle(
 
-              fontSize: 15,
+              fontSize: 13,
 
-              fontWeight:
-                  FontWeight.w600,
+              fontWeight: FontWeight.w600,
             ),
           ),
 
-          style:
-              ElevatedButton.styleFrom(
+          style: ElevatedButton.styleFrom(
 
             elevation: 0,
 
-            backgroundColor:
-                background,
+            backgroundColor: background,
 
-            foregroundColor:
-                textColor,
+            foregroundColor: textColor,
 
-            shape:
-                RoundedRectangleBorder(
+            shape: RoundedRectangleBorder(
 
               borderRadius:
                   BorderRadius.circular(16),
@@ -69,11 +64,11 @@ class RequeteActionButtons
 
             padding:
                 const EdgeInsets.symmetric(
-              vertical: 14,
+              vertical: 8,
             ),
           ),
 
-          onPressed: () {},
+          onPressed: onPressed,
         ),
       ),
     );
@@ -86,37 +81,36 @@ class RequeteActionButtons
 
       children: [
 
-        // 🔥 VALIDER
         button(
 
           title: "Valider",
 
-          icon:
-              Icons.check_rounded,
+          icon: Icons.check_rounded,
 
           background:
               const Color(0xFFE8F5EE),
 
           textColor:
               const Color(0xFF1B7F4C),
+
+          onPressed: onValider,
         ),
 
-        // 🔥 REFUSER
         button(
 
           title: "Refuser",
 
-          icon:
-              Icons.close_rounded,
+          icon: Icons.close_rounded,
 
           background:
               const Color(0xFFFDECEC),
 
           textColor:
               const Color(0xFFC0392B),
+
+          onPressed: onRefuser,
         ),
 
-        // 🔥 PLUS INFOS
         button(
 
           title: "Plus d'infos",
@@ -129,6 +123,8 @@ class RequeteActionButtons
 
           textColor:
               const Color(0xFF2563EB),
+
+          onPressed: () {},
         ),
       ],
     );

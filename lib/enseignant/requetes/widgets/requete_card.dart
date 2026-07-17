@@ -69,53 +69,59 @@ class RequeteCard
                     BorderRadius.circular(12),
               ),
 
-              child: Text(
-
-                requete.type,
-
-                style: TextStyle(
-
-                  color:
-                      Colors.blue.shade700,
-
-                  fontWeight:
-                      FontWeight.bold,
-                ),
-              ),
+            child: const Icon(
+  Icons.description,
+  color: Colors.blue,
+),
             ),
 
             const SizedBox(width: 15),
 
-            Expanded(
+     Expanded(
+  child: Column(
+    crossAxisAlignment:
+        CrossAxisAlignment.start,
 
-              child: Column(
+    children: [
 
-                crossAxisAlignment:
-                    CrossAxisAlignment.start,
+      Text(
+        requete.ue,
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 17,
+        ),
+      ),
 
-                children: [
+      const SizedBox(height: 5),
 
-                  Text(
+      Text(
+        requete.etudiant,
+        style: const TextStyle(
+          fontWeight: FontWeight.w600,
+        ),
+      ),
 
-                    requete.etudiant,
+      const SizedBox(height: 5),
 
-                    style: const TextStyle(
+      Text(
+        requete.objet,
+        style: const TextStyle(
+          color: Colors.grey,
+        ),
+      ),
 
-                      fontWeight:
-                          FontWeight.bold,
+      const SizedBox(height: 5),
 
-                      fontSize: 16,
-                    ),
-                  ),
-
-                  const SizedBox(height: 4),
-
-                  Text(
-                    "Matricule : ${requete.matricule}",
-                  ),
-                ],
-              ),
-            ),
+      Text(
+        requete.date,
+        style: const TextStyle(
+          fontSize: 12,
+          color: Colors.grey,
+        ),
+      ),
+    ],
+  ),
+),
 
             Container(
 

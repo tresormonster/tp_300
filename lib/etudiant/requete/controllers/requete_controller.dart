@@ -1,33 +1,65 @@
-import '../models/ue_model.dart';
-
-import '../models/requete_model.dart';
+import 'package:file_picker/file_picker.dart';
 
 import '../services/requete_service.dart';
 
 class RequeteController {
+  final service = RequeteService();
 
-  final RequeteService service =
-      RequeteService();
+  Future<List<dynamic>> chargerRequetes(int idEtudiant) {
+    return service.chargerRequetes(idEtudiant);
+  }
 
-  Future<List<UeModel>>
-      chargerUes(
-    int idNiveau,
-  ) {
+  Future<bool> creerRequete({
+    required int idEtudiant,
 
-    return service
-        .getUesByNiveau(
-      idNiveau,
+    required int idUe,
+
+    required String objet,
+
+    required String message,
+    required List<PlatformFile> piecesJointes,
+  }) {
+    return service.creerRequete(
+      idEtudiant: idEtudiant,
+
+      idUe: idUe,
+
+      objet: objet,
+
+      message: message,
+
+      piecesJointes: piecesJointes,
     );
   }
 
-  Future<bool>
-      soumettreRequete(
-    RequeteModel requete,
-  ) {
+  Future<bool> modifierRequete({
 
-    return service
-        .envoyerRequete(
-      requete,
-    );
+  required int idRequete,
+
+  required String objet,
+
+  required String message,
+
+  required List<String> piecesJointes,
+}) {
+
+  return service.modifierRequete(
+
+    idRequete: idRequete,
+
+    objet: objet,
+
+    message: message,
+
+    piecesJointes: piecesJointes,
+  );
+}
+
+  Future<bool> supprimerRequete(int idRequete) {
+    return service.supprimerRequete(idRequete);
+  }
+
+  Future<List<dynamic>> chargerUeContestables(int idEtudiant) {
+    return service.chargerUeContestables(idEtudiant);
   }
 }
