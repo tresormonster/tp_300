@@ -147,24 +147,13 @@ class EtudiantTopbar
           Row(
 
             children: [
-
-              CircleAvatar(
-
-                radius: 34,
-
-                backgroundColor:
-                    Colors.white,
-
-                child: Icon(
-
-                  Icons.school,
-
-                  size: 34,
-
-                  color:
-                      Color(0xFF1E5B3A),
-                ),
-              ),
+           CircleAvatar(
+  radius: 34,
+  backgroundColor: Colors.white,
+  backgroundImage: const AssetImage(
+    "assets/images/avatar.png",
+  ),
+),
 
               const SizedBox(width: 15),
 
@@ -178,7 +167,7 @@ class EtudiantTopbar
 
                 children: const [
 
-                  Text(
+                  /*Text(
 
                     "Étudiant",
 
@@ -207,7 +196,7 @@ class EtudiantTopbar
 
                       fontSize: 15,
                     ),
-                  ),
+                  ),*/
                 ],
               ),
             ],

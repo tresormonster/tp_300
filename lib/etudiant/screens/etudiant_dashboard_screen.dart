@@ -13,6 +13,8 @@ import '../widgets/etudiant_body.dart';
 import '../pages/notes_page.dart';
 
 import '../pages/requete_page.dart';
+import '../../authentiification/screens/login_screen.dart';
+import '../../authentiification/services/token_service.dart';
 
 
 class EtudiantDashboardScreen
@@ -189,19 +191,24 @@ class _EtudiantDashboardScreenState
                   showMenu:
                       showMenu,
 
-                  onSelectPage:
-                      (page) {
+                  onSelectPage: (page) async {
 
-                    if (page ==
-                        "logout") {
+                    if (page == "logout") {
 
-                      Navigator.pop(
-                        context,
-                      );
+  await TokenService.clearSession();
 
-                      return;
-                    }
+  if (!context.mounted) return;
 
+  Navigator.pushAndRemoveUntil(
+    context,
+    MaterialPageRoute(
+      builder: (_) => const LoginScreen(),
+    ),
+    (route) => false,
+  );
+
+  return;
+}
                     setState(() {
 
                       dashboardController

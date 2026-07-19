@@ -106,4 +106,40 @@ static Future<int?> getId() async {
     _idKey,
   );
 }
+
+// 🔥 REMOVE ROLE
+static Future<void> removeRole() async {
+
+  final prefs =
+      await SharedPreferences
+          .getInstance();
+
+  await prefs.remove(
+    _roleKey,
+  );
+}
+
+// 🔥 REMOVE ID
+static Future<void> removeId() async {
+
+  final prefs =
+      await SharedPreferences
+          .getInstance();
+
+  await prefs.remove(
+    _idKey,
+  );
+}
+
+// 🔥 CLEAR SESSION
+static Future<void> clearSession() async {
+
+  final prefs =
+      await SharedPreferences
+          .getInstance();
+
+  await prefs.remove(_tokenKey);
+  await prefs.remove(_roleKey);
+  await prefs.remove(_idKey);
+}
 }
