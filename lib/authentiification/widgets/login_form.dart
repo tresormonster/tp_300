@@ -72,16 +72,31 @@ if (result.isSuccess) {
     return;
   }
 
-  if (result.message ==
-      "ENSEIGNANT") {
+  if (result.message == "ENSEIGNANT") {
 
-    Navigator.pushReplacementNamed(
-  context,
-  AppRoutes.enseignant,
-);
+  Navigator.pushReplacementNamed(
+    context,
+    AppRoutes.enseignant,
+  );
 
-    return;
-  }
+  return;
+}
+
+if (result.message == "ADMIN") {
+
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      content: Text("Le code ADMIN est exécuté"),
+    ),
+  );
+
+  Navigator.pushReplacementNamed(
+    context,
+    AppRoutes.admin,
+  );
+
+  return;
+}
 }
 
 

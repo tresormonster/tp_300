@@ -85,7 +85,7 @@ class AdminTopbar
 
             children: [
 
-              Text(
+              /*Text(
 
                 "Administration Système",
 
@@ -98,11 +98,11 @@ class AdminTopbar
                   fontWeight:
                       FontWeight.bold,
                 ),
-              ),
+              ),*/
 
               SizedBox(height: 4),
 
-              Text(
+              /*Text(
 
                 "Gestion sécurité et accès",
 
@@ -112,7 +112,7 @@ class AdminTopbar
 
                   fontSize: 14,
                 ),
-              ),
+              ),*/
             ],
           ),
 
@@ -138,21 +138,12 @@ class AdminTopbar
 
             children: [
 
-              CircleAvatar(
-
-                radius: 24,
-
-                backgroundColor:
-                    Colors.white,
-
-                child: Icon(
-
-                  Icons.admin_panel_settings,
-
-                  color:
-                      Colors.green.shade700,
-                ),
-              ),
+             CircleAvatar(
+  radius: 24,
+  backgroundImage: const AssetImage(
+    "assets/images/avatar.png",
+  ),
+),
 
               const SizedBox(width: 12),
 
@@ -166,7 +157,7 @@ class AdminTopbar
 
                 children: [
 
-                  Text(
+                  /*Text(
 
                     "Admin Système",
 
@@ -179,11 +170,11 @@ class AdminTopbar
 
                       fontSize: 16,
                     ),
-                  ),
+                  ),*/
 
                   SizedBox(height: 3),
 
-                  Text(
+                 /* Text(
 
                     "Super Administrateur",
 
@@ -194,7 +185,7 @@ class AdminTopbar
 
                       fontSize: 13,
                     ),
-                  ),
+                  ),*/
                 ],
               ),
             ],
