@@ -10,6 +10,9 @@ import '../gestion_note/views/notes_page.dart';
 
 import '../requetes/screens/requete_screen.dart';
 
+import '../../../authentiification/screens/login_screen.dart';
+
+
 class EnseignantDashboardScreen
     extends StatefulWidget {
 
@@ -184,17 +187,31 @@ class _EnseignantDashboardScreenState
 
                   showMenu: showMenu,
 
-                  onSelectPage: (page) {
+                 onSelectPage: (page) {
 
-                    setState(() {
+  if (page == "logout") {
 
-                      dashboardController
-                          .changePage(page);
+    Navigator.pushAndRemoveUntil(
 
-                      sidebarController
-                          .toggleMenu();
-                    });
-                  },
+      context,
+
+      MaterialPageRoute(
+        builder: (_) => const LoginScreen(),
+      ),
+
+      (route) => false,
+    );
+
+    return;
+  }
+
+  setState(() {
+
+    dashboardController.changePage(page);
+
+    sidebarController.toggleMenu();
+  });
+},
                 ),
               ),
             ),

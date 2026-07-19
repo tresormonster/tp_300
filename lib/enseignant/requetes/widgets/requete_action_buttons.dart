@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class RequeteActionButtons extends StatelessWidget {
-
   final VoidCallback onValider;
   final VoidCallback onRefuser;
 
@@ -11,64 +10,38 @@ class RequeteActionButtons extends StatelessWidget {
     required this.onRefuser,
   });
 
-  Widget button({
-    required String title,
-    required IconData icon,
-    required Color background,
-    required Color textColor,
+  Widget bouton({
+    required IconData icone,
+    required String texte,
     required VoidCallback onPressed,
   }) {
-
     return Expanded(
-
-      child: Container(
-
-        height: 42,
-
-        margin: const EdgeInsets.only(
-          right: 12,
-        ),
-
+      child: SizedBox(
+        height: 50,
         child: ElevatedButton.icon(
-
-          icon: Icon(
-            icon,
-            size: 18,
+          onPressed: onPressed,
+          icon: const Icon(
+            Icons.check,
+            color: Colors.white,
+            size: 22,
           ),
-
           label: Text(
-
-            title,
-
+            texte,
             style: const TextStyle(
-
-              fontSize: 13,
-
+              color: Colors.white,
+              fontSize: 15,
               fontWeight: FontWeight.w600,
             ),
           ),
-
           style: ElevatedButton.styleFrom(
-
-            elevation: 0,
-
-            backgroundColor: background,
-
-            foregroundColor: textColor,
-
+            backgroundColor: const Color(0xFF5EA8FF),
+            foregroundColor: Colors.white,
+            elevation: 2,
+            shadowColor: Colors.black12,
             shape: RoundedRectangleBorder(
-
-              borderRadius:
-                  BorderRadius.circular(16),
-            ),
-
-            padding:
-                const EdgeInsets.symmetric(
-              vertical: 8,
+              borderRadius: BorderRadius.circular(14),
             ),
           ),
-
-          onPressed: onPressed,
         ),
       ),
     );
@@ -76,55 +49,62 @@ class RequeteActionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Row(
-
       children: [
-
-        button(
-
-          title: "Valider",
-
-          icon: Icons.check_rounded,
-
-          background:
-              const Color(0xFFE8F5EE),
-
-          textColor:
-              const Color(0xFF1B7F4C),
-
-          onPressed: onValider,
+        Expanded(
+          child: SizedBox(
+            height: 50,
+            child: ElevatedButton.icon(
+              onPressed: onValider,
+              icon: const Icon(
+                Icons.check_circle_outline,
+                color: Colors.white,
+              ),
+              label: const Text(
+                "Valider",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF5EA8FF),
+                elevation: 2,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
+                ),
+              ),
+            ),
+          ),
         ),
 
-        button(
+        const SizedBox(width: 15),
 
-          title: "Refuser",
-
-          icon: Icons.close_rounded,
-
-          background:
-              const Color(0xFFFDECEC),
-
-          textColor:
-              const Color(0xFFC0392B),
-
-          onPressed: onRefuser,
-        ),
-
-        button(
-
-          title: "Plus d'infos",
-
-          icon:
-              Icons.info_outline_rounded,
-
-          background:
-              const Color(0xFFEAF2FF),
-
-          textColor:
-              const Color(0xFF2563EB),
-
-          onPressed: () {},
+        Expanded(
+          child: SizedBox(
+            height: 50,
+            child: ElevatedButton.icon(
+              onPressed: onRefuser,
+              icon: const Icon(
+                Icons.cancel_outlined,
+                color: Colors.white,
+              ),
+              label: const Text(
+                "Refuser",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF7DB7FF),
+                elevation: 2,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
+                ),
+              ),
+            ),
+          ),
         ),
       ],
     );

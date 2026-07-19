@@ -94,7 +94,7 @@ class EtudiantTopbar
 
               children: const [
 
-                Text(
+               /* Text(
 
                   "Espace Étudiant",
 
@@ -121,7 +121,7 @@ class EtudiantTopbar
 
                     fontSize: 15,
                   ),
-                ),
+                ),*/
               ],
             ),
           ),

@@ -19,6 +19,8 @@ class RequeteModel {
 
   final String reponse;
   final int idRequete;
+  final String niveau;
+final String filiere;
 
   RequeteModel({
     required this.etudiant,
@@ -33,5 +35,7 @@ class RequeteModel {
     required this.prenomEnseignant,
     required this.reponse,
     required this.idRequete,
+    required this.niveau,
+required this.filiere,
   });
 }

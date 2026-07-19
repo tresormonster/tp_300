@@ -25,6 +25,10 @@ class _RequeteScreenState
       RequeteController();
 
   bool loading = true;
+  String niveau = "Tous";
+String filiere = "Toutes";
+String ue = "Toutes";
+String statut = "Toutes";
 
   @override
   void initState() {
@@ -32,6 +36,28 @@ class _RequeteScreenState
 
     charger();
   }
+
+
+  List<String> get niveaux => [
+      "Tous",
+      ...controller.state.requetes
+          .map((e) => e.niveau)
+          .toSet(),
+    ];
+
+List<String> get filieres => [
+      "Toutes",
+      ...controller.state.requetes
+          .map((e) => e.filiere)
+          .toSet(),
+    ];
+
+List<String> get ues => [
+      "Toutes",
+      ...controller.state.requetes
+          .map((e) => e.ue)
+          .toSet(),
+    ];
 
   Future<void> charger() async {
 
@@ -63,6 +89,29 @@ class _RequeteScreenState
       );
     }
 
+
+    final requetesFiltrees = controller.state.requetes.where((r) {
+
+  if (niveau != "Tous" && r.niveau != niveau) {
+    return false;
+  }
+
+  if (filiere != "Toutes" && r.filiere != filiere) {
+    return false;
+  }
+
+  if (ue != "Toutes" && r.ue != ue) {
+    return false;
+  }
+
+  if (statut != "Toutes" && r.statut != statut) {
+    return false;
+  }
+
+  return true;
+
+}).toList();
+
     return Container(
 
       padding:
@@ -72,7 +121,40 @@ class _RequeteScreenState
 
         children: [
 
-          const RequeteFilterBar(),
+          RequeteFilterBar(
+  niveau: niveau,
+  filiere: filiere,
+  ue: ue,
+  statut: statut,
+
+  niveaux: niveaux,
+  filieres: filieres,
+  ues: ues,
+
+  onNiveauChanged: (value) {
+    setState(() {
+      niveau = value!;
+    });
+  },
+
+  onFiliereChanged: (value) {
+    setState(() {
+      filiere = value!;
+    });
+  },
+
+  onUeChanged: (value) {
+    setState(() {
+      ue = value!;
+    });
+  },
+
+  onStatutChanged: (value) {
+    setState(() {
+      statut = value!;
+    });
+  },
+),
 
           Expanded(
 
@@ -86,10 +168,7 @@ class _RequeteScreenState
 
                   child: RequeteList(
 
-                    requetes:
-                        controller
-                            .state
-                            .requetes,
+                    requetes: requetesFiltrees,
 
                     onSelect: (requete) {
 

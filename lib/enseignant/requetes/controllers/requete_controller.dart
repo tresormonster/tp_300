@@ -70,6 +70,10 @@ class RequeteController {
 
   reponse:
       r["reponse"] ?? "",
+
+      niveau: r["niveau"],
+
+filiere: r["filiere"],
 );
         },
       ).toList(),

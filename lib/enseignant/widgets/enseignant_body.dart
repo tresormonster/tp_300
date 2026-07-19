@@ -136,19 +136,19 @@ class EnseignantBody
                       ],
                     ),
 
-                    child: Icon(
+                    /*child: Icon(
 
                       Icons.school_rounded,
 
                       size: 70,
 
                       color: Colors.blue.shade700,
-                    ),
+                    ),*/
                   ),
 
                   const SizedBox(height: 30),
 
-                  // 🔥 TITLE
+                 /* // 🔥 TITLE
                   Text(
 
                     "Espace Enseignant",
@@ -179,7 +179,7 @@ class EnseignantBody
                       color:
                           Colors.grey.shade500,
                     ),
-                  ),
+                  ),*/
                 ],
               ),
             ),

@@ -87,9 +87,9 @@ class EnseignantTopbar
 
             children: [
 
-              Text(
+            /*  Text(
 
-                "Dashboard Enseignant",
+               // "Dashboard Enseignant",
 
                 style: TextStyle(
 
@@ -106,7 +106,7 @@ class EnseignantTopbar
 
               Text(
 
-                "Gestion académique moderne",
+               // "Gestion académique moderne",
 
                 style: TextStyle(
 
@@ -114,7 +114,7 @@ class EnseignantTopbar
 
                   fontSize: 14,
                 ),
-              ),
+              ),*/
             ],
           ),
 
@@ -142,22 +142,13 @@ class EnseignantTopbar
 
             children: [
 
-              CircleAvatar(
-
-                radius: 24,
-
-                backgroundColor:
-                    Colors.white,
-
-                child: Icon(
-
-                  Icons.person,
-
-                  color:
-                      Colors.blue.shade700,
-                ),
-              ),
-
+   CircleAvatar(
+  radius: 24,
+  backgroundColor: Colors.white,
+  backgroundImage: const AssetImage(
+    "assets/images/avatar.png",
+  ),
+),
               const SizedBox(width: 12),
 
               const Column(
@@ -170,7 +161,7 @@ class EnseignantTopbar
 
                 children: [
 
-                  Text(
+                 /* Text(
 
                     "Dr Junior",
 
@@ -183,11 +174,11 @@ class EnseignantTopbar
 
                       fontSize: 16,
                     ),
-                  ),
+                  ),*/
 
                   SizedBox(height: 3),
 
-                  Text(
+                  /*Text(
 
                     "Enseignant",
 
@@ -198,7 +189,7 @@ class EnseignantTopbar
 
                       fontSize: 13,
                     ),
-                  ),
+                  ),*/
                 ],
               ),
             ],
