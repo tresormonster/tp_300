@@ -46,36 +46,53 @@ class _TableauTPState
     charger();
   }
 
-  Future<void> charger() async {
 
-    final data =
-        await controller.chargerTP(
-      widget.idUe,
-    );
 
-    for (final e in data) {
+  @override
+void didUpdateWidget(covariant TableauTP oldWidget) {
+  super.didUpdateWidget(oldWidget);
 
-      notesControllers[
-          e['id_etudiant']] =
+  if (oldWidget.idUe != widget.idUe) {
+    notesControllers.clear();
 
-          TextEditingController(
+    rechercheController.clear();
 
-        text:
-            e['note_tp']
-                ?.toString() ??
-            "",
-      );
-    }
+    etudiants.clear();
 
-    setState(() {
+    etudiantsFiltres.clear();
 
-      etudiants = data;
+    loading = true;
 
-      etudiantsFiltres = data;
-
-      loading = false;
-    });
+    charger();
   }
+}
+
+  
+Future<void> charger() async {
+
+  notesControllers.clear();
+
+  final data = await controller.chargerTP(
+    widget.idUe,
+  );
+
+  for (final e in data) {
+    notesControllers[e['id_etudiant']] =
+        TextEditingController(
+      text: e['note_tp']?.toString() ?? "",
+    );
+  }
+
+  if (!mounted) return;
+
+  setState(() {
+    etudiants = data;
+    etudiantsFiltres = data;
+    loading = false;
+  });
+}
+
+
 
   void rechercher(
     String valeur,

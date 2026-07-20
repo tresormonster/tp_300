@@ -47,6 +47,21 @@ class _TableauRattrapageState
   }
 
 
+@override
+void didUpdateWidget(covariant TableauRattrapage oldWidget) {
+  super.didUpdateWidget(oldWidget);
+
+  if (oldWidget.idUe != widget.idUe) {
+    notesControllers.clear();
+
+    anonymats.clear();
+
+    loading = true;
+
+    charger();
+  }
+}
+
 
   Future<void> publier() async {
 
@@ -74,33 +89,28 @@ class _TableauRattrapageState
 
   Future<void> charger() async {
 
-    final data =
-        await controller
-            .chargerRattrapage(
-      widget.idUe,
+  notesControllers.clear();
+
+  final data =
+      await controller.chargerRattrapage(
+    widget.idUe,
+  );
+
+  for (final e in data) {
+
+    notesControllers[e['id_anonymat']] =
+        TextEditingController(
+      text: e['note_sn']?.toString() ?? "",
     );
-
-    for (final e in data) {
-
-      notesControllers[
-          e['id_anonymat']] =
-
-          TextEditingController(
-
-        text:
-            e['note_sn']
-                ?.toString() ??
-            "",
-      );
-    }
-
-    setState(() {
-
-      anonymats = data;
-
-      loading = false;
-    });
   }
+
+  if (!mounted) return;
+
+  setState(() {
+    anonymats = data;
+    loading = false;
+  });
+}
 
   Future<void> enregistrer() async {
 

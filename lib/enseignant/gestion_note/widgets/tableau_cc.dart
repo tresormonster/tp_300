@@ -39,6 +39,26 @@ class _TableauCCState extends State<TableauCC> {
     charger();
   }
 
+  @override
+void didUpdateWidget(covariant TableauCC oldWidget) {
+  super.didUpdateWidget(oldWidget);
+
+  if (oldWidget.idUe != widget.idUe) {
+
+    notesControllers.clear();
+
+    rechercheController.clear();
+
+    etudiants.clear();
+
+    etudiantsFiltres.clear();
+
+    loading = true;
+
+    charger();
+  }
+}
+
   Future<void> charger() async {
     final data = await controller.chargerCC(widget.idUe);
 

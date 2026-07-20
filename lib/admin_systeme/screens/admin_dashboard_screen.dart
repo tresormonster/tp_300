@@ -174,26 +174,17 @@ case "anonymats":
                   ),
 
                   child: AnimatedPadding(
+  duration: const Duration(milliseconds: 250),
 
-                    duration:
-                        const Duration(
-                      milliseconds: 250,
-                    ),
+  padding: EdgeInsets.only(
+    left: showMenu ? 300 : 25,
+    right: 25,
+    top: 20,
+    bottom: 20,
+  ),
 
-                    padding:
-                        EdgeInsets.only(
-
-                      left:
-
-                          showMenu
-
-                              ? 220
-
-                              : 0,
-                    ),
-
-                    child: currentPage(),
-                  ),
+  child: currentPage(),
+),
                 ),
               ),
             ],

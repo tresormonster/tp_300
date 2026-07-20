@@ -86,31 +86,33 @@ class _NotesPageState
                    : type == "CC"
 
     ? TableauCC(
-        idUe: idUe!,
-      )
+  key: ValueKey("CC-$idUe"),
+  idUe: idUe!,
+)
 
 : type == "TP"
 
     ? TableauTP(
-        idUe: idUe!,
-      )
+  key: ValueKey("TP-$idUe"),
+  idUe: idUe!,
+)
 
 : type == "S1" ||
   type == "S2"
 
    ? TableauSN(
+  key: ValueKey("SN-$idUe-$type"),
   idUe: idUe!,
-  hasTp:
-    ueSelectionnee!.hasTp,
+  hasTp: ueSelectionnee!.hasTp,
 )
 
 : type == "S1R" ||
   type == "S2R"
 
     ?TableauRattrapage(
+  key: ValueKey("RT-$idUe"),
   idUe: idUe!,
-  hasTp:
-      ueSelectionnee!.hasTp,
+  hasTp: ueSelectionnee!.hasTp,
 )
 
     : const Center(
