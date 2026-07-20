@@ -550,45 +550,29 @@ if (cycleSelectionne == null) {
                         },
                       );
 
-                      bool success =
-
-                         await importService.importExcel(
-
-  controller.state.fileBytes!,
-
-  controller.state.fileName!,
-
-  cycleSelectionne!,
-
-  filiereController.text.trim(),
-
-  niveauController.text.trim(),
-);
+                    final resultat =
+    await importService.importExcel(
+      controller.state.fileBytes!,
+      controller.state.fileName!,
+      cycleSelectionne!,
+      filiereController.text.trim(),
+      niveauController.text.trim(),
+    );
+    print("SUCCESS = ${resultat.success}");
+print("MESSAGE = ${resultat.message}");
 
                       Navigator.pop(context);
 
                       // 🔥 SUCCESS
-                      if (success) {
-
-                        setState(() {
-
-                          controller
-                              .importSuccess();
-                        });
-                      }
-
-                      // 🔥 ERROR
-                      else {
-
-                        setState(() {
-
-                          controller.importError(
-
-                            "Erreur pendant l'importation",
-                          );
-                        });
-                      }
-                    },
+     setState(() {
+  if (resultat.success) {
+    controller.importSuccess(resultat.message);
+  } else {
+    controller.importError(resultat.message);
+  }
+});
+print("CONTROLLER = ${controller.state.message}");
+}, 
 
                     style:
                         ElevatedButton.styleFrom(

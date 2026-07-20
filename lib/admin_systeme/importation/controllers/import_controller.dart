@@ -37,24 +37,21 @@ class ImportController {
     );
   }
 
-  void importSuccess() {
+  void importSuccess(String message) {
 
-    state = ImportState(
+  state = ImportState(
 
-      fileName:
-          state.fileName,
+    fileName: state.fileName,
 
-      fileBytes:
-          state.fileBytes,
+    fileBytes: state.fileBytes,
 
-      message:
-          "Importation réussie",
+    message: message,
 
-      isError: false,
+    isError: false,
 
-      isImported: true,
-    );
-  }
+    isImported: true,
+  );
+}
 
   void importError(
     String message,

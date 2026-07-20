@@ -84,11 +84,11 @@ if (result.isSuccess) {
 
 if (result.message == "ADMIN") {
 
-  ScaffoldMessenger.of(context).showSnackBar(
+  /*ScaffoldMessenger.of(context).showSnackBar(
     const SnackBar(
-      content: Text("Le code ADMIN est exécuté"),
+      content: Text(""),
     ),
-  );
+  );*/
 
   Navigator.pushReplacementNamed(
     context,

@@ -11,6 +11,7 @@ import '../widgets/admin_menu.dart';
 import '../widgets/admin_body.dart';
 
 import '../importation/screens/import_etudiant_screen.dart';
+import '../pages/historique_imports_page.dart';
 
 // 🔥 NOUVELLES PAGES
 import '../pages/enseignants_page.dart';
@@ -19,6 +20,9 @@ import '../pages/ue_page.dart';
 
 import '../pages/enseignements_page.dart';
 import '../gestion_anonymat/views/anonymats_page.dart';
+
+import '../../authentiification/services/token_service.dart';
+import '../../routes/app_routes.dart';
 
 class AdminDashboardScreen
     extends StatefulWidget {
@@ -69,19 +73,10 @@ class _AdminDashboardScreenState
         );
 
       // 🔥 USERS
-      case "users":
+      // 🔥 HISTORIQUE IMPORTS
+case "historique_imports":
 
-        return const Center(
-
-          child: Text(
-
-            "Gestion utilisateurs",
-
-            style: TextStyle(
-              fontSize: 28,
-            ),
-          ),
-        );
+  return const HistoriqueImportsPage();
 
       // 🔥 ENSEIGNANTS
       case "enseignants":
@@ -242,17 +237,30 @@ case "anonymats":
 
                   showMenu: showMenu,
 
-                  onSelectPage: (page) {
+                  onSelectPage: (page) async {
 
-                    setState(() {
+  if (page == "logout") {
 
-                      dashboardController
-                          .changePage(page);
+    await TokenService.clearSession();
 
-                      sidebarController
-                          .toggleMenu();
-                    });
-                  },
+    if (!mounted) return;
+
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      AppRoutes.login,
+      (route) => false,
+    );
+
+    return;
+  }
+
+  setState(() {
+
+    dashboardController.changePage(page);
+
+    sidebarController.toggleMenu();
+  });
+},
                 ),
               ),
             ),

@@ -177,9 +177,9 @@ class AdminMenu
 
           Icons.people_outline,
 
-          "Gestion utilisateurs",
+          "Historique des imports",
 
-          "users",
+          "historique_imports",
         ),
 
         // 🔥 ENSEIGNANTS
